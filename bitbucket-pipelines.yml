@@ -3,9 +3,6 @@ pipelines:
     - step:
         name: Sync GitHub Mirror
         image: alpine/git:latest
-        clone:
-          enabled: false
         script:
-          - git clone --bare git@bitbucket.org:mirror-repo/test-repo.git
-          - cd mirror-repo.git
-          - git push --mirror git@github.com:Gaurav2327/mirror-repo.git
+          - git remote add github git@github.com:Gaurav2327/mirror-repo.git
+          - git push --mirror github
